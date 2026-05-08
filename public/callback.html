@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autorizado</title>
+</head>
+<body>
+  <h2>✅ Autorização concluída</h2>
+
+  <script>
+    const url = new URL(window.location.href);
+    const code = url.searchParams.get("code");
+
+    if (code) {
+      fetch("/api/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ code })
+      });
+    }
+  </script>
+</body>
+</html>
